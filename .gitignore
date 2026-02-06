@@ -1,0 +1,26 @@
+# Audio files
+audio/
+historical/
+*.wav
+*.mp3
+*.m4a
+*.flac
+*.ogg
+*.webm
+*.opus
+
+# Transcriptions (generated)
+transcriptions/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.Python
+
+# macOS
+.DS_Store
+*.swp
+
+# Old command file (replaced by app)
+Transcribir.command

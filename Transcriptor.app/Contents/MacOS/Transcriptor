@@ -1,0 +1,24 @@
+#!/bin/bash
+# Transcriptor App - Main executable
+
+SCRIPT_DIR="$(cd "$(dirname "$0")/../../.." && pwd)"
+cd "$SCRIPT_DIR"
+
+# Create audio folder if needed
+mkdir -p audio
+
+# Open audio folder in Finder
+open audio
+
+# Show dialog to user
+osascript -e 'display dialog "Arrastra tus archivos de audio a la carpeta que se ha abierto.
+
+Cuando estés listo, pulsa OK para iniciar la transcripción." with title "🎙️ Transcriptor" buttons {"Cancelar", "OK"} default button "OK" with icon note' 2>/dev/null
+
+if [ $? -eq 0 ]; then
+    # Run transcription in a new Terminal window
+    osascript -e "tell application \"Terminal\"
+        activate
+        do script \"cd '$SCRIPT_DIR' && ./venv/bin/python transcribe.py; echo ''; echo 'Pulsa cualquier tecla para cerrar...'; read -n 1\"
+    end tell"
+fi
