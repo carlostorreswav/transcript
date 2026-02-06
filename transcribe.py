@@ -24,8 +24,11 @@ HISTORICAL_DIR = SCRIPT_DIR / "historical"
 AUDIO_EXTENSIONS = {".wav", ".mp3", ".m4a", ".flac", ".ogg", ".webm", ".opus"}
 
 # Ratio aproximado: tiempo real de proceso / duración del audio
-# Basado en tests: 5:13 de audio → 2:07 de proceso ≈ 0.4x
-PROCESS_RATIO = 0.4
+# Basado en tests reales:
+#   46:02 audio → 16:01 proceso = 0.35x
+#   05:12 audio → 02:03 proceso = 0.39x
+# Promedio conservador: 0.35x
+PROCESS_RATIO = 0.35
 
 
 def notify(title: str, message: str, sound: bool = True):
